@@ -1,6 +1,8 @@
 # angular-svg-sprite-issue
 
-This project reproduces a bug with [svg-sprite-loader](https://github.com/kisenka/svg-sprite-loader) in extract mode when integrating with [Angular CLI](https://github.com/angular/angular-cli).
+**UPDATE(2020-04-17):** Issue was fixed with `svg-sprite-loader@4.2.4`.
+
+This project reproduces a bug with [svg-sprite-loader](https://github.com/JetBrains/svg-sprite-loader) in extract mode when integrating with [Angular CLI](https://github.com/angular/angular-cli).
 
 ## Background to the integration
 
@@ -16,7 +18,7 @@ angular-svg-sprite-issue\node_modules\@angular-devkit\build-webpack\src\utils.js
 
 TypeError: Cannot read property 'toString' of null
 ```
-Although the error is thrown in the package [@angular-devkit/build-webpack](https://www.npmjs.com/package/@angular-devkit/build-webpack) the root cause lies in the plug-in of svg-sprite-loader. In the plug-in a new chunk for the SVG sprite is added to the webpack compilation without setting its `id` ([see code](https://github.com/kisenka/svg-sprite-loader/blob/85f07caed508403ab259b5b13eabc97704e0261b/lib/plugin.js#L165-L179)).
+Although the error is thrown in the package [@angular-devkit/build-webpack](https://www.npmjs.com/package/@angular-devkit/build-webpack) the root cause lies in the plug-in of svg-sprite-loader. In the plug-in a new chunk for the SVG sprite is added to the webpack compilation without setting its `id` ([see code](https://github.com/JetBrains/svg-sprite-loader/blob/85f07caed508403ab259b5b13eabc97704e0261b/lib/plugin.js#L165-L179)).
 
 ## Reproduction steps
 
